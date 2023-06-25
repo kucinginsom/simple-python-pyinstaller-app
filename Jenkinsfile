@@ -9,6 +9,8 @@ node {
     stage('Test') {
         docker.image('qnib/pytest').inside {
             sh 'py.test --junit-xml test-reports/results.xml sources/test_calc.py'
+            stash includes: 'test-reports/*.xml*', name: 'compiled-results-test'
+
         }
         post {
             always {
