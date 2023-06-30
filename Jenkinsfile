@@ -34,6 +34,9 @@ pipeline {
             input {
                 message "Lanjutkan ke tahap Deploy?"
             }
+            steps {
+                
+            }            
         }        
         // on Deploy Stage, add pythion installer image, after that sleep 1 minute before stage deploy finish
         stage('Deploy') {
