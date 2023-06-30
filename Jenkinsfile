@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python -m py_compile sources/random_number_generator.py sources/random.py'
+                sh 'python -m py_compile sources/random_number_generator.py sources/random_number_generator.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
