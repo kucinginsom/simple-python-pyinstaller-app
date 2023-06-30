@@ -20,7 +20,9 @@ node {
     stage('Deploy') {
         docker.image('cdrx/pyinstaller-linux:python2').inside {
             sh 'pyinstaller --onefile sources/add2vals.py'
-            sleep(time: 1, unit: 'MINUTES')
+        }
+        if (currentBuild.result == 'SUCCESS') {
+            archiveArtifacts 'dist/add2vals'
         }
     }
 
