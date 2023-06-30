@@ -31,11 +31,8 @@ pipeline {
         }
         // Wait for user input before going to Deploy Stage
         stage('Manual Approval') {
-            input {
-                message "Lanjutkan ke tahap Deploy?"
-            }
             steps {
-                
+                input message: 'Lanjutkan ke tahap Deploy?'
             }            
         }        
         // on Deploy Stage, add pythion installer image, after that sleep 1 minute before stage deploy finish
