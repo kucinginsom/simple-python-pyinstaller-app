@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+                sh 'python -m py_compile sources/random_number_generator.py sources/random.py'
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
@@ -48,12 +48,12 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID) { 
                     unstash(name: 'compiled-results') 
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'" 
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F random_number_generator.py'" 
                 }
             }
             post {
                 success {
-                    archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
+                    archiveArtifacts "${env.BUILD_ID}/sources/dist/random_number_generator" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                     sleep(time: 1, unit: 'MINUTES')
                 }
