@@ -16,15 +16,13 @@ node {
     stage('Manual Approval') {
         input message: 'Lanjutkan ke tahap Deploy?'
     }    
-    // on Deploy Stage, add pythion installer image, if success save artifact, and after that sleep 1 minute before stage deploy finish
+    // on Deploy Stage, add pythion installer image, after that sleep 1 minute before stage deploy finish
     stage('Deploy') {
         docker.image('cdrx/pyinstaller-linux:python2').inside {
             sh 'pyinstaller --onefile sources/add2vals.py'
-        }
-        if (currentBuild.result == 'SUCCESS') {
             archiveArtifacts 'dist/add2vals'
+            sleep(time: 1, unit: 'MINUTES')
         }
-        sleep(time: 1, unit: 'MINUTES')
     }
 
 }
