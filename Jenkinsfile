@@ -19,11 +19,9 @@ node {
     // on Deploy Stage, add pythion installer image, after that sleep 1 minute before stage deploy finish
     stage('Deploy') {
         docker.image('cdrx/pyinstaller-linux:python2').inside {
-            sh 'pyinstaller --onefile sources/add2vals.py'
+            sleep(time: 1, unit: 'MINUTES')
         }
-        if (currentBuild.result == 'SUCCESS') {
-            archiveArtifacts 'dist/add2vals'
-        }
+
     }
 
 }
