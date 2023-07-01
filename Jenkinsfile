@@ -17,9 +17,7 @@ node {
     after that sleep 1 minute before stage deploy finish
     */
     stage('Deploy') {
-        steps {
-            sh ''
-        }
+            sh 'echo deploy'
         // sshagent(['ssh-agent-pythonapp']) {
         //     sh 'ssh -t ubuntu@13.250.37.157 -o StrictHostKeyChecking=no sh /home/ubuntu/python_app.sh'
         // }
