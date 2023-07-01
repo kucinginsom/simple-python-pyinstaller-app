@@ -58,6 +58,10 @@ pipeline {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+                    sshagent(['ssh-agent-pythonapp']) {
+                        sh 'ssh -t ubuntu@13.250.37.157 -o StrictHostKeyChecking=no sh /home/ubuntu/python_app.sh'
+                    }                    
+                    sleep(time: 1, unit: 'MINUTES')                                    
                 }
             }
         }
