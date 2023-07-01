@@ -14,13 +14,7 @@ node {
     }
     // Wait for user input before going to Deploy Stage
     stage('Manual Approval') {
-        input {
-            message 'Lanjutkan ke tahap Deploy?'
-        }
-
-        steps {
-            echo "approved"
-        }
+        input(message: "Lanjutkan ke tahap Deploy?", ok: 'Deploy')
     }    
     /* on Deploy Stage, we run ssh agent to connect to AWS EC2 instance
     and after that running shell script that pull new code and restart server
