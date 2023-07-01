@@ -23,7 +23,7 @@ def index():
         sumVal = ""
     return (
         """<form action="" method="get">
-                <h4>Base Logic For Life - add2vals</h4>
+                <h4>Test deployment- Base Logic For Life - add2vals</h4>
                 Number1: <input type="text" name="number1">
                 Number2: <input type="text" name="number2">
                 <input type="submit" value="Sum the numbers">
