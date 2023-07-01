@@ -27,6 +27,7 @@ node {
         steps {
             script {
                 //run sh scripted file on aws, sleep 1minute
+                echo "Success running"
 
             }
         }
