@@ -20,17 +20,7 @@ node {
 
     // on Deploy Stage, add pythion installer image, after that sleep 1 minute before stage deploy finish
     stage('Deploy') {
-        environment {
-            APP_NAME = 'pythonapp'
-            VIRTUAL_ENV = 'venv'
-        }
-        steps {
-            script {
-                //run sh scripted file on aws, sleep 1minute
-                echo "Success running"
-
-            }
-        }
+        echo "Success running"
     }    
 
 
