@@ -17,7 +17,9 @@ node {
     after that sleep 1 minute before stage deploy finish
     */
     stage('Deploy') {
-        sh 'echo deploy'
+        docker.image('qnib/pytest').inside {
+            sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
+        }
 
         // sshagent(['ssh-agent-pythonapp']) {
         //     sh 'ssh -t ubuntu@13.250.37.157 -o StrictHostKeyChecking=no sh /home/ubuntu/python_app.sh'
